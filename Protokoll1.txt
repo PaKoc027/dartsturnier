@@ -1,0 +1,96 @@
+Spieler:
+- Id
+- Name
+- Song
+
+turnier:
+- Id
+- Name
+
+Spiel:
+- Id
+- TurnierID
+- Spieler1
+- gewonneneLegSpieler1 
+- Spieler2
+- gewonneneLegSpieler2
+- Status (offen, spielend, fertig)
+- Legs (3, 5, 1)
+- Checkout (DO, SO)
+- Punkte (501, 301)
+- Sieger
+- currentLeg
+
+Legs:
+- id
+- spielId
+- Punkte S1
+- Punkte S2
+- isBeendet
+
+
+
+Schnittstellen
+
+- getTurnierBaum(TurnierID)
+hole den gesamten Turnierbaum
+- getAllSpieler
+hole alle Spieler in eine Liste
+- createSpieler(Spieler)
+Erstelle einen neuen Spieler
+- starteTurnier(SpielerListe)
+Starte ein Turnier
+
+
+- getSpiel(SpielID)
+Hole Informationen zu einem Spiel (auch live)
+- startSpiel(SpielId)
+Setze ein Spiel auf gestartet (erstes Leg initiieren)
+- setLeg(LegId)
+Setze die Werte in einem Leg
+-updateLeg(LegId)
+Setze die Punkte der Spieler in einem Leg
+- finishLeg(Leg)
+Beende das Leg, überprüfe ob ein Spieler gewonnen hat, wenn ja, beende Spiel, wenn nein, starte nächstes Leg
+
+- 
+
+
+Turiner erstellen --> SPieler liste machen --> turnier generiert --> Turnier
+
+
+Ich brauche folgende Seiten:
+
+Die Website beginnt mit einer Seite wo man zwischen zwei Sachen auswählen kann:
+- Turnier erstellen
+- Turnier ansehen
+
+- Turnier ansehen:
+ Hier muss man die ID des Turnieres angeben, wenn diese in der Datenbank gefunden wird, wird man auf die Hauptseite weitergeleitet:
+ 
+#Ansicht eines Turniers.
+ 
+Auf der Hauptansicht des Turnieres sind die SPiele in Tabellen Angezeigt, nach Achtelfinale, Viertelfinal, Halbfinale, Finale.
+In einer Zeile stehen die Beiden Spieler und der akutelle Spielstand, bei noch offenen Partien nur -, und bei noch offenen SPielern "noch offen"
+Man kann auf ein einzelnes Spiel klicken und so die Detailansicht zu einem Spiel einsehen
+
+#Detailansicht
+Die Detail ansicht zeigt: Den aktuellen Spielstand, die beiden Kontrahenten und auch wie das akutelle Leg steht
+Je nach aktuellem Status. Spiel beendet, SPiel live, noch ausstehend
+
+Über eine Button lässt sich auf den Dartszähler zugreifen, der live die Punkte einträgt
+
+Sam Majore
+ 0 : 1
+ 
+*live
+156 : 200
+
+#Dartszähler 
+Hierrüber lassen sich live die Punkte eintragen
+
+Architektur? Push oder Event-Driven. Frage offen
+
+# Aktuelle Live Ansicht
+
+Über eine Button auf der Ansicht des Turniers kommt man auf die live Ansicht, wo auf zwei Seiten die jeweiligen aktuellen Matches angezeigt werden, die live sind. Wenn kein match live ist wird der Turnierbaum angezeigt.
